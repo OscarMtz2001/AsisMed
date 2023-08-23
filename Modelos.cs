@@ -32,7 +32,7 @@ namespace AsisMed
             MySqlDataReader consultas;
             ConexionBD objetoConexion = new ConexionBD();
 
-            string ValidarU = "SELECT id FROM usuarios WHERE usuario LIKE @usuario";
+            string ValidarU = "SELECT id FROM usuarios WHERE usuario LIKE BINARY @usuario";
             MySqlCommand mySqlCommand = new MySqlCommand(ValidarU, objetoConexion.RealizarConexion());
             mySqlCommand.Parameters.Add(new MySqlParameter("@usuario", usuario));
             consultas = mySqlCommand.ExecuteReader();
@@ -53,7 +53,7 @@ namespace AsisMed
             MySqlDataReader consultarUsuario;
             ConexionBD objetoConexion = new ConexionBD();
 
-            string ValidarU = "SELECT usuario, contrasena, nombre, apellido_paterno, apellido_materno FROM usuarios WHERE usuario LIKE @usuario";
+            string ValidarU = "SELECT usuario, contrasena, nombre, apellido_paterno, apellido_materno FROM usuarios WHERE usuario LIKE BINARY @usuario";
             MySqlCommand mySqlCommand = new MySqlCommand(ValidarU, objetoConexion.RealizarConexion());
             mySqlCommand.Parameters.Add(new MySqlParameter("@usuario", usuario));
             consultarUsuario = mySqlCommand.ExecuteReader();
